@@ -1,0 +1,42 @@
+{% include 'header.html' %}
+
+<br>
+<a href="{{url_for('create')}}" class="btn btn-success">Crear Maestros</a>
+<a href="{{url_for('index')}}" class="btn btn-primary">Pagina Principal</a>
+<br>
+<br>
+
+<table class="table table-light">
+      <thead class="thead-light">
+          <tr>
+              <th>#</th>
+              <th>Foto</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Correo</th>
+              <th>Materia</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+           {% for maestro  in maestros  %}
+           <tr>
+            <td>{{maestro[0] }}</td>
+            <td><img class="img-thumbnail" width="100" src="uploads/{{maestro[5]}}" alt=""></td>
+            <td>{{maestro[1] }}</td>
+            <td>{{maestro[2] }}</td>
+            <td>{{maestro[3] }}</td>
+            <td>{{maestro[4] }}</td>
+            <td>
+                <a class="btn btn-warning" href="/edit/{{maestro[0]}}">Editar</a>
+                <a onclick= "return confirm ('Desea Borrar el Registro')" class="btn btn-danger" href="/destroy/{{maestro[0]}}">Eliminar</a>
+            
+            </td>
+        </tr>
+               
+           {% endfor %}
+
+      </tbody>
+  </table>
+
+  {% include 'footer.html' %}
